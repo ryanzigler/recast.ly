@@ -8,11 +8,11 @@ class App extends React.Component {
 
     this.state = {
       videos: [],
-      currentVideo: null
+      currentVideo: {video}
     };
   }
 
-  titleClick() {
+  titleClick(video) {
     this.setState({
       currentVideo: video
     });
@@ -28,10 +28,10 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div> <VideoPlayer video={this.state.currentVideo} /></div>
+            <VideoPlayer video={this.state.currentVideo} />
           </div>
           <div className="col-md-5">
-            <div><VideoList videos={this.state.videos} titleClick={this.state.video} /></div>
+            <VideoList videos={this.state.videos} titleClick={this.titleClick.bind(this)} />
           </div>
         </div>
       </div>
